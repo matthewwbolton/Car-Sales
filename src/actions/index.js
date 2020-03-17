@@ -17,3 +17,12 @@ export const buyItem = item => {
     payload: item
   };
 };
+
+export const UPDATE_TOTAL = "UPDATE_TOTAL";
+
+export const updateTotal = item => {
+  return {
+    type: UPDATE_TOTAL,
+    payload: item
+  };
+};

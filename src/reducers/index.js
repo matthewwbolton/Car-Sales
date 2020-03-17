@@ -1,4 +1,4 @@
-import { BUY_ITEM, REMOVE_FEATURE } from "../actions";
+import { BUY_ITEM, REMOVE_FEATURE, UPDATE_TOTAL } from "../actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -47,6 +47,14 @@ export const carReducer = (state = initialState, action) => {
             elem => elem.id !== action.payload
           )
         }
+      };
+
+    case UPDATE_TOTAL:
+      const addedPrice = state.car.features(elem => elem.price);
+      console.log("$$$$$$$$$$$", addedPrice);
+
+      return {
+        ...state
       };
 
     default:

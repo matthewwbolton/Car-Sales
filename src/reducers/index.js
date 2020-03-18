@@ -1,9 +1,4 @@
-import {
-  BUY_ITEM,
-  REMOVE_FEATURE,
-  INCREMENT_ADDITIONAL_PRICE,
-  DECREMENT_ADDITIONAL_PRICE
-} from "../actions";
+import { BUY_ITEM, REMOVE_FEATURE, UPDATE_TOTAL } from "../actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -34,7 +29,7 @@ export const carReducer = (state = initialState, action) => {
         ...state,
         car: {
           ...state.car,
-          features: [...state.car.features, addedFeature]
+          features: Array.from(new Set([...state.car.features, addedFeature]))
         }
       };
 
@@ -54,16 +49,13 @@ export const carReducer = (state = initialState, action) => {
         }
       };
 
-    case INCREMENT_ADDITIONAL_PRICE:
-      console.log("%%%%%", action.payload);
+    case UPDATE_TOTAL:
       return {
-        ...state
-      };
-
-    case DECREMENT_ADDITIONAL_PRICE:
-      console.log("@@@@@@@@", action.payload);
-      return {
-        ...state
+        ...state,
+        additionalPrice: state.car.features.reduce(
+          (acc, curr) => acc + curr.price,
+          0
+        )
       };
 
     default:

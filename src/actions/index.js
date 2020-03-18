@@ -18,20 +18,10 @@ export const buyItem = item => {
   };
 };
 
-export const INCREMENT_ADDITIONAL_PRICE = "INCREMENT_ADDITIONAL_PRICE";
+export const UPDATE_TOTAL = "UPDATE_TOTAL";
 
-export const incrementPrice = price => {
+export const updateTotal = price => {
   return {
-    type: INCREMENT_ADDITIONAL_PRICE,
-    payload: price
-  };
-};
-
-export const DECREMENT_ADDITIONAL_PRICE = "DECREMENT_ADDITIONAL_PRICE";
-
-export const decrementPrice = price => {
-  return {
-    type: DECREMENT_ADDITIONAL_PRICE,
-    payload: price
+    type: UPDATE_TOTAL
   };
 };

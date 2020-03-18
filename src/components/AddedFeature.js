@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeFeature, decrementPrice } from "../actions";
+import { removeFeature, updateTotal } from "../actions";
 
 const AddedFeature = props => {
   // console.log("$$$$$$$$$", props);
@@ -10,7 +10,7 @@ const AddedFeature = props => {
       <button
         onClick={() => {
           props.removeFeature(props.feature.id);
-          props.decrementPrice(props.feature.price);
+          props.updateTotal();
         }}
         className="button"
       >
@@ -27,4 +27,4 @@ const AddedFeature = props => {
 //   };
 // };
 
-export default connect(null, { removeFeature, decrementPrice })(AddedFeature);
+export default connect(null, { removeFeature, updateTotal })(AddedFeature);

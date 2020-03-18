@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { buyItem, removeFeature } from "../actions";
+import { buyItem, incrementPrice } from "../actions";
 
 const AdditionalFeature = props => {
   // console.log("this is props for ADD FEATURE", props);
@@ -8,7 +8,10 @@ const AdditionalFeature = props => {
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
       <button
-        onClick={() => props.buyItem(props.feature.id)}
+        onClick={() => {
+          props.buyItem(props.feature.id);
+          props.incrementPrice(props.feature.price);
+        }}
         className="button"
       >
         Add
@@ -24,4 +27,4 @@ const AdditionalFeature = props => {
 //   };
 // };
 
-export default connect(null, { buyItem, removeFeature })(AdditionalFeature);
+export default connect(null, { buyItem, incrementPrice })(AdditionalFeature);

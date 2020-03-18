@@ -1,4 +1,9 @@
-import { BUY_ITEM, REMOVE_FEATURE, UPDATE_TOTAL } from "../actions";
+import {
+  BUY_ITEM,
+  REMOVE_FEATURE,
+  INCREMENT_ADDITIONAL_PRICE,
+  DECREMENT_ADDITIONAL_PRICE
+} from "../actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -20,11 +25,11 @@ const initialState = {
 export const carReducer = (state = initialState, action) => {
   switch (action.type) {
     case BUY_ITEM:
-      console.log("this is the payload for buyItem", action.payload);
+      //   console.log("this is the payload for buyItem", action.payload);
       let addedFeature = state.additionalFeatures.find(
         elem => elem.id === action.payload
       );
-      console.log("&&&&&&&&&&&&&&&&&", addedFeature);
+      //   console.log("&&&&&&&&&&&&&&&&&", addedFeature);
       return {
         ...state,
         car: {
@@ -38,7 +43,7 @@ export const carReducer = (state = initialState, action) => {
       //     elem => elem.id !== action.payload
       //   );
       //   console.log("***********", remainingFeatures);
-      console.log("^^^^^^^^^^^^", action.payload);
+      //   console.log("^^^^^^^^^^^^", action.payload);
       return {
         ...state,
         car: {
@@ -49,10 +54,14 @@ export const carReducer = (state = initialState, action) => {
         }
       };
 
-    case UPDATE_TOTAL:
-      const addedPrice = state.car.features(elem => elem.price);
-      console.log("$$$$$$$$$$$", addedPrice);
+    case INCREMENT_ADDITIONAL_PRICE:
+      console.log("%%%%%", action.payload);
+      return {
+        ...state
+      };
 
+    case DECREMENT_ADDITIONAL_PRICE:
+      console.log("@@@@@@@@", action.payload);
       return {
         ...state
       };
